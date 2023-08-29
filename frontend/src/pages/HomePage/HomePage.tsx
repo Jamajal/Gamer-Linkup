@@ -1,13 +1,15 @@
-import React from 'react'
 import { Chat, Filters, Header, PostsList } from '../../components'
+import './HomePage.scss'
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='app__homepage'>
         <Header/>
-        <Filters/>
-        <PostsList/>
-        <Chat/>
+        <main className='app__homepage-main'>
+          <Filters/>
+          <PostsList/>
+          <Chat/>
+        </main>
     </div>
   )
 }
