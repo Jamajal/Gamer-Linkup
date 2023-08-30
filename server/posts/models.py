@@ -1,25 +1,36 @@
 from django.db import models
+from users.models import CustomUser
+
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
-    description = models.CharField(max_length=65, default='')
+    description = models.CharField(max_length=100, default='')
     cover = models.ImageField(upload_to='categories/covers/%Y/%m/%d/', blank=True, default='')
+
+    def __str__(self):
+        return self.name
 
 class PostManager(models.Manager):
     def get_posts_by_order(self):
-        return self.order_by('votes')
+        return self.order_by('-votes')
 
 class Post(models.Model):
     objects = PostManager()
     title = models.CharField(max_length=65, verbose_name=('Title'))
     description = models.TextField()
-    votes = models.IntegerField()
+    votes = models.IntegerField(default=0)
+    invited_players = models.IntegerField(default=1)
     cover = models.ImageField(upload_to='posts/covers/%Y/%m/%d/', blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         Category, 
-        on_delete=models.SET_NULL, 
-        null=True
+        blank=True,
+        default=''
+    )
+    author = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, null=True
     )
 
+    def __str__(self):
+        return self.title
