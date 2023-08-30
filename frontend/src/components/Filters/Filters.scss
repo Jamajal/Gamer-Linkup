@@ -1,5 +1,36 @@
+$primary-color: var(--black-color);
+
+@mixin device($d) {
+    @if device == mobile {
+        @media (max-width: 300px) {
+            @content
+        }
+    }
+
+    @if device == tablet {
+        @media (max-width: 600px) {
+            @content
+        }
+    }
+
+    @if device == desktop {
+        @media (max-width: 900px) {
+            @content
+        }
+    }
+}
+
+@mixin title-large {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: var(--font-base);
+    color: var(--white-color);
+}
+
+
+
 .app__filters {
-    background-color: var(--black-color);
+    background-color: $primary-color;
     color: var(--lightGray-color);
     font-family: var(--font-base);
 
@@ -20,9 +51,7 @@
         padding-bottom: 15px;
 
         h3 {
-            color: var(--white-color);
-            font-weight: 300;
-            font-size: 1.5rem;
+            @include title-large;
         }
     }
 
@@ -60,4 +89,47 @@
 
     }
 
+}
+
+.app__filters-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 0;
+
+    input {
+        padding: 5px 10px;
+        width: 100%;
+
+        background-color: var(--gray-color);
+        color: var(--white-color);
+
+        border: none;
+        border-radius: 5px;
+        
+        &::placeholder {
+            color: var(--lightGray-color);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font: var(--font-base);
+        color: var(--highlight-color);
+        background-color: var(--white-color);
+        transition: background-color .3s linear,color .3s linear;
+
+        &:hover {
+            background-color: var(--highlight-color);
+            color: var(--white-color);
+        }
+    }
 }

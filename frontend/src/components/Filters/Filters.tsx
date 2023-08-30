@@ -19,6 +19,10 @@ const Filters = () => {
         <img src={filterIcon}/>
         <h3>FILTERS</h3>
       </div>
+      <div className='app__filters-search'>
+        <input type='search' placeholder='Insert game title'/>
+        <button>Search</button>
+      </div>
       
       <ul  className='app__filters-categories'>
         <li>

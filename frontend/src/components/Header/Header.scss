@@ -2,6 +2,8 @@
     width: 100%;
     background: var(--black-color);
     color: var(--white-color);
+    border-bottom: 1px solid var(--white-color);
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
