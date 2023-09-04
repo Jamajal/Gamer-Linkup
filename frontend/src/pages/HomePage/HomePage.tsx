@@ -1,4 +1,4 @@
-import { Chat, Filters, Header, PostsList } from '../../components'
+import { Chat, Filters, Header, PostsList } from '../../components/index'
 import './HomePage.scss'
 
 const HomePage = () => {
@@ -7,7 +7,9 @@ const HomePage = () => {
         <Header/>
         <main className='app__homepage-main'>
           <Filters/>
-          <PostsList/>
+          <section className='app__homepage-main-posts'>
+            <PostsList />
+          </section>
           <Chat/>
         </main>
     </div>

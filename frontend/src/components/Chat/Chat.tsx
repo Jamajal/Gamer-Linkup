@@ -1,8 +1,10 @@
-import React from 'react'
+import './Chat.scss'
 
 const Chat = () => {
   return (
-    <div >Chat</div>
+    <section className='app__chat'>
+
+    </section>
   )
 }
 

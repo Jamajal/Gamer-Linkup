@@ -1,8 +1,19 @@
-import React from 'react'
+import Post from '../Post/Post'
+import './PostsList.scss'
 
 const PostsList = () => {
+
   return (
-    <div>PostsList</div>
+    <section className='app__postslist' >
+      <div className='app__postslist-title'>
+        <h2>WANNA PLAY SOMETHING?</h2>
+        <button>LET'S</button>
+      </div>
+      <h2>PEOPLE ARE LOOKING FOR BUDDIES TO PLAY</h2>
+      <div>
+        <Post/>
+      </div>
+    </section>
   )
 }
 
