@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from interests.models import Interest
+from categories.models import Category
 
 class CustomUser(AbstractUser):
     STATUS = (
@@ -11,14 +11,11 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     status = models.CharField(max_length=24, choices=STATUS, default='regular')
     discord_profile_code = models.CharField(max_length=50)
-    profile_image = models.ImageField()
+    #profile_image = models.ImageField()
 
     interests = models.ManyToManyField(
-        Interest,
+        Category,
         blank=True,
         default=''
     )    
-
-    def __str__(self):
-        return self.email
 

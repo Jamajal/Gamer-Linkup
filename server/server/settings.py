@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # My Apps
     'posts',
     'users',
-    'interests',
+    'categories',
 ]
 
 MIDDLEWARE = [

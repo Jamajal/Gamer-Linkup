@@ -20,7 +20,6 @@ def read_or_insert_post(request):
         }, status=status.HTTP_400_BAD_REQUEST)
     
     elif request.method == 'POST':
-        print(request.data)
         serializer = PostSerializer(
             data=request.data,
             context={'request': request},
@@ -35,7 +34,7 @@ def read_or_insert_post(request):
         )
 
 @api_view(http_method_names=['get', 'patch', 'delete'])
-def put_detail_delete(request, pk):
+def put_detail_delete_post(request, pk):
     post = get_object_or_404(
         Post.objects.get_posts_by_order(),
         pk=pk

@@ -1,50 +1,53 @@
-from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from rest_framework import status
 
-from .models import CustomUser
-from .serializers import UserSerializer
+from .models import Category
+from .serializers import CategorySerializer
 
 @api_view(http_method_names=['get', 'post'])
-def read_insert_user(request):
+def read_or_insert_category(request):
     if request.method == 'GET':
-        users = CustomUser.objects.all()
+        categories = Category.objects.all()
 
-        if(users):
-            serializer = UserSerializer(instance=users, many=True)
+        if(categories):
+            serializer = CategorySerializer(instance=categories, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         
         return Response({
-            'detail': "Coudn't find any users"
+            'detail': "Couldn't find any categories"
         }, status=status.HTTP_404_NOT_FOUND)
 
     elif request.method == 'POST':
-        serializer = UserSerializer(
+        serializer = CategorySerializer(
             data = request.data,
-            context={'request':request}
+            context = {'request':request}
         )
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+        return Response(
+            serializer.data, 
+            status=status.HTTP_201_CREATED
+        )
+    
 @api_view(http_method_names=['get', 'patch', 'delete'])
-def put_detail_delete_user(request, pk):
-    user = CustomUser.objects.all().filter(pk=pk).first()
+def put_detail_delete_category(request, pk):
+    category = Category.objects.all().filter(pk=pk).first()
 
-    if user:
+    if category:
         if request.method == 'GET':
-            serializer = UserSerializer(
-                instance=user, 
+            serializer = CategorySerializer(
+                instance=category, 
                 many=False,
                 context={'request':request}
             )
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         elif request.method == 'PATCH':
-            serializer = UserSerializer(
-                instance=user,
+            serializer = CategorySerializer(
+                instance=category,
                 data=request.data,
                 many=False,
                 context={'request': request},
@@ -58,9 +61,9 @@ def put_detail_delete_user(request, pk):
             )
         
         elif request.method == 'DELETE':
-            user.delete()
+            category.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
     
     return Response({
-        'detail': f'User with id {pk} not found.'
+        'detail': f'Category with id {pk} not found.'
     }, status=status.HTTP_404_NOT_FOUND)
