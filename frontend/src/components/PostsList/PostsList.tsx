@@ -12,6 +12,8 @@ const PostsList = () => {
       <h2>PEOPLE ARE LOOKING FOR BUDDIES TO PLAY</h2>
       <div>
         <Post/>
+        <Post/>
+        <Post/>
       </div>
     </section>
   )

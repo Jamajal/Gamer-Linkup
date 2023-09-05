@@ -5,6 +5,8 @@
     background-color: var(--black-color);
     border-radius: 10px;
 
+    margin-bottom: 40px;
+
     figure {
         display: inline-block;
         position: relative;
@@ -12,7 +14,7 @@
         figcaption {
             position: absolute;
             top: 210px;
-            left: 10px;
+            left: 20px;
             font-size: 28px;
             color: var(--white-color);
             z-index: 2;
@@ -30,17 +32,52 @@
 
     .app__post-content {
         color: var(--lightGray-color);
-        padding: 10px;
+        padding: 0px 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
     }
 
 
 }
 
 .app__post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    input {
-        background-image: url('../../assets/user-icon.png');
-        background-color: black;
+    .app__post-footer-buttons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
 
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+            &:hover:nth-child(-n+3) {
+                button {
+                    background-color: var(--highlight-color);
+                }
+                color: var(--highlight-color);
+            }
+
+            button {
+                width: 30px;
+                height: 25px;
+                border: none;
+                border-radius: 5px 5px 0 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    p {
+        color: var(--highlight-color);
     }
 }
