@@ -1,19 +1,13 @@
 .app__homepage {
-
-    height: 100vh;
-
-    
-
+  height: 100vh;
 }
 .app__homepage-main {
+  display: flex;
+
+  .app__homepage-main-posts {
+    background-color: RED;
+    width: 100%;
     display: flex;
-
-    .app__homepage-main-posts {
-        background-color: RED;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        
-    }
+    justify-content: center;
+  }
 }

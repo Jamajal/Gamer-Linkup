@@ -1,0 +1,67 @@
+.app__loginPage {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url('../../assets/bg-login.png') no-repeat center;
+  background-size: cover;
+
+  color: var(--white-color);
+
+  > h1 {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-weight: 700;
+    font-family: var(--font-base);
+  }
+
+  .app__loginPage-loginBox {
+    padding: 30px 90px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+
+    .app__loginPage-loginBox-welcome {
+      text-align: center;
+
+      h1 {
+        font-size: 36px;
+      }
+
+      h2 {
+        color: var(--lightGray-color);
+      }
+    }
+
+    .app__loginPage-loginBox-credentials {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
