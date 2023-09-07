@@ -10,6 +10,7 @@
   background: url('../../assets/bg-login.png') no-repeat center;
   background-size: cover;
 
+  font-family: var(--font-base);
   color: var(--white-color);
 
   > h1 {
@@ -17,7 +18,6 @@
     top: 15px;
     left: 30px;
     font-weight: 700;
-    font-family: var(--font-base);
   }
 
   .app__loginPage-loginBox {
@@ -30,6 +30,9 @@
 
     border: 1px solid var(--white-color);
     border-radius: 10px;
+
+    background: rgba(11, 11, 11, 0.5);
+    backdrop-filter: blur(5px);
 
     .app__loginPage-loginBox-welcome {
       text-align: center;
@@ -46,6 +49,8 @@
     .app__loginPage-loginBox-credentials {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      gap: 10px;
       width: 100%;
 
       > div {
@@ -55,6 +60,102 @@
 
         input {
           width: 100%;
+          padding: 10px 8px;
+          margin-top: 5px;
+
+          font-size: 18px;
+          font-weight: 700;
+
+          color: var(--lightGray-color);
+          background-color: var(--gray-color);
+
+          border: none;
+          border-radius: 5px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .app__loginPage-loginBox-credentials-field-customizedPassword {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        padding-right: 10px;
+        margin-top: 5px;
+
+        font-size: 18px;
+        font-weight: 700;
+
+        color: var(--lightGray-color);
+        background-color: var(--gray-color);
+
+        border: none;
+        border-radius: 5px;
+
+        &:focus {
+          outline: none;
+        }
+
+        img {
+          width: 23px;
+          height: 18px;
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    .app__loginPage-loginBox-separator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      width: 100%;
+
+      .customHr {
+        height: 1px;
+        width: 100%;
+        background-color: var(--lightGray-color);
+      }
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .app__loginPage-loginBox-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 13rem;
+
+        border-radius: 5px;
+
+        cursor: pointer;
+      }
+
+      .app__loginPage-loginBox-footer-otherOptions {
+        p {
+          font-size: 14px;
+
+          a {
+            font-size: 16px;
+            color: var(--highlight-color);
+
+            text-decoration: none;
+
+            &:hover {
+              text-shadow: 0 0 1em var(--highlight-color),
+                0 0 0.2em var(--highlight-color);
+            }
+          }
         }
       }
     }
@@ -62,6 +163,8 @@
 }
 
 .error {
-  color: red;
+  height: 15px;
   text-align: center;
+  font-size: 14px;
+  color: red;
 }
