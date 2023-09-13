@@ -1,0 +1,41 @@
+.app__postslist {
+    font-family: var(--font-base);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 700px;
+    margin: 0 16em;
+
+    h2 {
+        font-size: 33.5px;
+    }
+
+    .app__postslist-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        padding: 15px 0;
+        
+
+        button {
+            background-color: var(--highlight-color);
+            padding: 5px 70px; 
+            border: none;
+            border-radius: 5px;
+            
+            color: var(--white-color);
+            font-family: var(--font-base);
+            font-size: 28px;
+
+            cursor: pointer;
+
+        
+
+        }
+    }
+}
