@@ -9,4 +9,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'nickname', 'email', 'discord_profile_code', 'interests', 'status']
+        fields = ['id', 'password', 'username', 'email', 'discord_profile_code', 'interests']
