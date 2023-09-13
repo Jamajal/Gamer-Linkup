@@ -33,7 +33,7 @@
 
             &:first-child {
                 border-bottom: 1px solid var(--white-color);
-                padding: 15px 0px;
+                padding: 0 0 5px 0;
             }
 
 
@@ -84,10 +84,10 @@
     }
 
     button {
-        width: 100px;
         padding: 5px 10px;
         border-radius: 5px;
         font-family: var(--font-base);
+        font-size: 18px;
         color: var(--highlight-color);
         background-color: var(--white-color);
         transition: background-color .3s linear,color .3s linear;

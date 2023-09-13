@@ -58,6 +58,7 @@
             align-items: center;
             gap: 5px;
 
+
             &:hover:nth-child(-n+3) {
                 button {
                     background-color: var(--highlight-color);
@@ -66,6 +67,7 @@
             }
 
             button {
+                background-color: var(--white-color);
                 width: 30px;
                 height: 25px;
                 border: none;

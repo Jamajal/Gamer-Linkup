@@ -1,5 +1,4 @@
 import './Chat.scss'
-import searchIcon from '../../assets/search-icon.png'
 
 const Chat = () => {
   return (
@@ -8,7 +7,7 @@ const Chat = () => {
       <div className='chat__search'>
         <input type='search' placeholder='Insert buddy name'>
         </input>
-        <button></button>
+        <button>search</button>
       </div>
       <ul>
         <li><div/>LEANDRINHO123</li>

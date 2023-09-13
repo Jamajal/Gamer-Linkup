@@ -1,32 +1,34 @@
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState, useContext } from 'react';
 import './LoginPage.scss';
 
 import GoogleButton from '../../assets/google-button.png';
 import Button from '../../components/Button/Button';
 import VisibilityToggle from '../../assets/visibility-toggle.png';
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/authContext';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate()
+  const { login } = useContext(AuthContext)
+
   const inputPassword = document.querySelector('#input-password');
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const authentication = false;
 
     if (!email || !password) {
       setError('All credentials must be provided!');
       return;
     }
-    // Try to authenticate
-    setEmail('');
-    setPassword('');
+    
+    login(email, password)
+    navigate('/')
 
-    if (!authentication) {
-      setError('Email or Password not correctly!');
-    }
   };
 
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {

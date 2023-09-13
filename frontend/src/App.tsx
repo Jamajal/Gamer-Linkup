@@ -1,12 +1,8 @@
 //import HomePage from "./pages/HomePage/HomePage"
-import LoginPage from './pages/LoginPage/LoginPage';
+import { AppRoutes } from './routes/appRoutes';
 
 function App() {
-  return (
-    <>
-      <LoginPage />
-    </>
-  );
+  return <AppRoutes/>
 }
 
 export default App;
