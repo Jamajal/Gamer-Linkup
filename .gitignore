@@ -23,7 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+<<<<<<< HEAD
 # Backend
+=======
+>>>>>>> loginPage
 # Django #
 *.log
 *.pot
@@ -111,7 +114,11 @@ env.bak/
 venv.bak/
 
 # mkdocs documentation
+<<<<<<< HEAD
 /posts
+=======
+/site
+>>>>>>> loginPage
 
 # mypy
 .mypy_cache/
