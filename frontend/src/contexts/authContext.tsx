@@ -1,44 +1,57 @@
 import { createContext, useState, useEffect } from 'react';
 
-import { api, createSession } from '../services/api';
+import { api, createSession, verifySession } from '../services/api';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: { children: any }) => {
-    const [token, setToken] = useState('');
-    const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({
+    id: 0,
+    username: '',
+  });
+  const getUser = async (token: string) => {
+    const response = await verifySession(token);
+    if (response) setUser(response.data);
+  };
 
-    useEffect(() => {
-        const recoverToken = localStorage.getItem('token');
+  useEffect(() => {
+    const recoverToken = localStorage.getItem('token');
 
-        if (recoverToken) setToken(recoverToken);
+    if (recoverToken) {
+      setToken(recoverToken);
+      getUser(recoverToken);
+    }
 
-        setLoading(false);
-    }, []);
+    setLoading(false);
+  }, []);
 
-    const login = async (email: string, password: string) => {
-        const response = await createSession(email, password);
+  const login = async (email: string, password: string) => {
+    const response = await createSession(email, password);
 
-        if (response.status == 200) {
-            const token = response.data.token;
+    if (response.status == 200) {
+      const userToken = response.data.token;
 
-            localStorage.setItem('token', token);
+      getUser(userToken);
 
-            api.defaults.headers.Authorization = `Bearer ${token}`;
-        }
-};
+      localStorage.setItem('token', userToken);
 
-const logout = () => {
+      api.defaults.headers.Authorization = `Bearer ${userToken}`;
+    }
+  };
+
+  const logout = () => {
     setToken('');
     api.defaults.headers.Authorization = null;
     localStorage.removeItem('token');
-};
+  };
 
-    return (
-        <AuthContext.Provider
-        value={{ authenticated: !!token, token, loading, login, logout }}
-        >
-        {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider
+      value={{ authenticated: !!token, user, loading, login, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
