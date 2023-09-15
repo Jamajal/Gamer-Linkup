@@ -23,5 +23,5 @@ export const getPosts = async () => {
 };
 
 export const updateVotes = async (newVotes: number, id: number) => {
-  return api.patch(`/api/v1/posts/${id}`, { votes: newVotes });
+  return api.patch(`/api/v1/posts/post/${id}`, { votes: newVotes });
 };

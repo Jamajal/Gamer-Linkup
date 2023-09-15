@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }: { children: any }) => {
     id: 0,
     username: '',
   });
+
   const getUser = async (token: string) => {
     const response = await verifySession(token);
     if (response) setUser(response.data);
@@ -26,6 +27,10 @@ export const AuthProvider = ({ children }: { children: any }) => {
 
     setLoading(false);
   }, []);
+
+  const test = () => {
+    console.log('teste');
+  };
 
   const login = async (email: string, password: string) => {
     const response = await createSession(email, password);
@@ -49,7 +54,7 @@ export const AuthProvider = ({ children }: { children: any }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!token, user, loading, login, logout }}
+      value={{ authenticated: !!token, user, test, loading, login, logout }}
     >
       {children}
     </AuthContext.Provider>
