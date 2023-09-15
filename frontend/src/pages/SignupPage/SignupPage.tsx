@@ -1,20 +1,19 @@
-import { ChangeEvent, MouseEvent, useState, useContext } from 'react';
-import './LoginPage.scss';
+import { useState, useContext, ChangeEvent, MouseEvent } from 'react';
 
-import GoogleButton from '../../assets/google-button.png';
 import Button from '../../components/Button/Button';
 import VisibilityToggle from '../../assets/visibility-toggle.png';
-import { useNavigate } from 'react-router-dom';
+import './SignupPage.scss';
 import { AuthContext } from '../../contexts/authContext';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  //const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-
   const inputPassword = document.querySelector('#input-password');
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
@@ -25,11 +24,10 @@ const LoginPage = () => {
       return;
     }
 
-    login(email, password);
-    navigate('/');
+    navigate('/login');
   };
 
-  const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setError('');
     setEmail(e.target.value);
   };
@@ -48,12 +46,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="app__loginPage">
-      <h1>GAMER LINKUP</h1>
-      <section className="app__loginPage-loginBox">
-        <div className="app__loginPage-loginBox-welcome">
-          <h1>SIGN IN</h1>
-          <h2>FIND PARTNERS FOR YOUR GAMEPLAYS</h2>
+    <div className="app__signupPage">
+      <h1>Gamer Linkup</h1>
+      <section className="app__signupPage-signupBox">
+        <div className="app__signupPage-signupBox-welcome">
+          <h1>SIGN UP</h1>
+          <h2>START THE YOUR JORNEY AND MAKE NEW FRIENDS</h2>
         </div>
         <form className="app__loginPage-loginBox-credentials">
           <div className="app__loginPage-loginBox-credentials-field">
@@ -62,7 +60,16 @@ const LoginPage = () => {
               type="email"
               placeholder="john.wick@gmail.com"
               value={email}
-              onChange={(e) => handleEmail(e)}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          <div className="app__loginPage-loginBox-credentials-field">
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="John Wick"
+              value={username}
+              onChange={(e) => handleInputChange(e)}
             />
           </div>
           <div className="app__loginPage-loginBox-credentials-field">
@@ -85,25 +92,9 @@ const LoginPage = () => {
           <span className="error">{error}</span>
           <Button onClick={handleSubmit} content="Login" />
         </form>
-        <div className="app__loginPage-loginBox-separator">
-          <div className="customHr" />
-          <span>OR</span>
-          <div className="customHr" />
-        </div>
-        <div className="app__loginPage-loginBox-footer">
-          <img src={GoogleButton} alt="Google" />
-          <div className="app__loginPage-loginBox-footer-otherOptions">
-            <p>
-              Don't Have An Account? <a href="#">Sign Up!</a>
-            </p>
-            <p>
-              Forgot Your Password? <a href="#">Click Here!</a>
-            </p>
-          </div>
-        </div>
       </section>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;

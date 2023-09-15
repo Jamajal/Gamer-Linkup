@@ -1,8 +1,14 @@
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import { AuthContext } from "../contexts/authContext";
-import { useContext } from "react"
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from 'react-router-dom';
+import { AuthContext } from '../contexts/authContext';
+import { useContext } from 'react';
+
+import HomePage from '../pages/HomePage/HomePage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import SignupPage from '../pages/SignupPage/SignupPage';
 
 const Private = ({ children }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -17,24 +23,24 @@ const Private = ({ children }) => {
 };
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: 
-          <Private>
-            <HomePage/>
-          </Private>
-    },
-    {
-        path: '/login',
-        element: <LoginPage/>
-    }
-]) 
-
-
+  {
+    path: '/',
+    element: (
+      <Private>
+        <HomePage />
+      </Private>
+    ),
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignupPage />,
+  },
+]);
 
 export const AppRoutes = () => {
-
-  return (
-    <RouterProvider router={router}/>
-  )
-}
+  return <RouterProvider router={router} />;
+};
