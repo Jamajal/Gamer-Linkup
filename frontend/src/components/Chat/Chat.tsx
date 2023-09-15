@@ -1,13 +1,18 @@
 import './Chat.scss'
+import searchIcon from '../../assets/search-icon.svg'
+import buddiesIcon from '../../assets/buddies-icon.png'
 
 const Chat = () => {
   return (
     <section className='chat'>
-      <h2>YOUR BUDDIES</h2>
+      <div className='chat-title'>
+        <img src={buddiesIcon}/>
+        <h3>BUDDIES</h3>
+      </div>
       <div className='chat__search'>
         <input type='search' placeholder='Insert buddy name'>
         </input>
-        <button>search</button>
+        <button><img src={searchIcon}/></button>
       </div>
       <ul>
         <li><div/>LEANDRINHO123</li>
