@@ -1,5 +1,6 @@
 import './Filters.scss'
 import filterIcon from '../../assets/filter-icon.svg'
+import searchIcon from '../../assets/search-icon.svg'
 
 const Filters = () => {
 
@@ -21,7 +22,7 @@ const Filters = () => {
       </div>
       <div className='app__filters-search'>
         <input type='search' placeholder='Insert game title'/>
-        <button>Search</button>
+        <button><img src={searchIcon}/></button>
       </div>
       
       <ul  className='app__filters-categories'>

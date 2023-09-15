@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import { AuthContext } from "../contexts/authContext";
+import { AuthContext, AuthProvider } from "../contexts/authContext";
 import { useContext } from "react"
 
 const Private = ({ children }) => {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: 
-          <Private>
+          <Private>                                                                                       
             <HomePage/>
           </Private>
     },
@@ -35,6 +35,8 @@ const router = createBrowserRouter([
 export const AppRoutes = () => {
 
   return (
-    <RouterProvider router={router}/>
+    <AuthProvider>
+      <RouterProvider router={router}/>
+    </AuthProvider>
   )
 }
