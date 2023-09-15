@@ -17,26 +17,24 @@ const Private = ({ children }) => {
 };
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: 
-          <Private>                                                                                       
-            <HomePage/>
-          </Private>
-    },
-    {
-        path: '/login',
-        element: <LoginPage/>
-    }
-]) 
-
-
+  {
+    path: '/',
+    element: (
+      <Private>
+        <HomePage />
+      </Private>
+    ),
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+]);
 
 export const AppRoutes = () => {
-
   return (
     <AuthProvider>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </AuthProvider>
-  )
-}
+  );
+};

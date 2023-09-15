@@ -5,6 +5,8 @@ from rest_framework import status
 
 from .models import Post
 from .serializers import PostSerializer
+from .serializers import PostSerializerRead
+from users.models import CustomUser
 
 @api_view(http_method_names=['get', 'post'])
 def read_or_insert_post(request):
@@ -12,7 +14,7 @@ def read_or_insert_post(request):
         posts = Post.objects.get_posts_by_order()
         
         if(posts):      
-            serializer = PostSerializer(instance=posts, many=True)
+            serializer = PostSerializerRead(instance=posts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         
         return Response({
@@ -41,7 +43,7 @@ def put_detail_delete_post(request, pk):
     )
 
     if request.method == 'GET':
-       serializer = PostSerializer(
+       serializer = PostSerializerRead(
             instance=post,
             many=False,
             context={'request': request},
@@ -65,3 +67,15 @@ def put_detail_delete_post(request, pk):
     elif request.method == 'DELETE':
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(http_method_names=['get'])
+def get_posts_by_id(request, pk):
+    user = CustomUser.objects.get(pk=pk)
+    posts = Post.objects.filter(author=user)
+    if(posts):      
+        serializer = PostSerializerRead(instance=posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+    return Response({
+        'detail': 'Nops...'
+    }, status=status.HTTP_400_BAD_REQUEST)
