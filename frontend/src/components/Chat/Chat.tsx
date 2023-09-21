@@ -3,6 +3,9 @@ import searchIcon from '../../assets/search-icon.svg'
 import buddiesIcon from '../../assets/buddies-icon.png'
 
 const Chat = () => {
+
+  const userStatus = 'busy'
+
   return (
     <section className='chat'>
       <div className='chat-title'>
@@ -15,9 +18,9 @@ const Chat = () => {
         <button><img src={searchIcon}/></button>
       </div>
       <ul>
-        <li><div/>LEANDRINHO123</li>
-        <li><div/>A DANI CARRY 2023</li>
-        <li><div/>TUI ESMAGA</li>
+        <li><div className='status--${userStatus}' /> LEANDRINHO123</li>
+        <li><div className='status--${userStatus}' /> A DANI CARRY 2023</li>
+        <li><div className='status--${userStatus}' /> TUI ESMAGA</li>
       </ul>
     </section>
   )

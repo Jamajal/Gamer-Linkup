@@ -1,3 +1,16 @@
+$statusList: online, busy;
+
+@each $status in $statusList {
+    .status--#{$status} {
+        @if $status == busy {
+            background-color: red;
+        }
+        @else {
+            background-color: green;
+        }
+    }
+}
+
 .chat {
     position: fixed;
     right: 0;
@@ -85,8 +98,8 @@ ul {
         gap: 10px;
 
         
-        div {
-            background-color: green;
+        .status {
+            background-color: pink;
             height: 10px;
             width: 10px;
 
